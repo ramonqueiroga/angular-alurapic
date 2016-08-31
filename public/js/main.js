@@ -14,6 +14,7 @@ angular.module('alurapic', ['minhasDiretivas', 'ngAnimate', 'ngRoute'])
 
 	$routeProvider.when('/fotos/new', {
 		templateUrl: 'partials/cadastro-foto.html',
+		controller: 'CadastroFotoController'
 	});	
 
 	/** CASO ALGUMA ROTA NÃO EXISTA, ELE VEM PARAR AQUI */
