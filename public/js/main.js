@@ -17,6 +17,11 @@ angular.module('alurapic', ['minhasDiretivas', 'ngAnimate', 'ngRoute'])
 		controller: 'CadastroFotoController'
 	});	
 
+	$routeProvider.when('/fotos/edit/:fotoId', {
+		templateUrl: 'partials/cadastro-foto.html',
+		controller: 'CadastroFotoController'
+	});
+
 	/** CASO ALGUMA ROTA NÃO EXISTA, ELE VEM PARAR AQUI */
 	$routeProvider.otherwise({ redirectTo: '/fotos' });
 });
