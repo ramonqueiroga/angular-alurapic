@@ -1,4 +1,4 @@
 angular.module('alurapic')
-	.factory('recursoGrupo', function($resource) {
+	.factory('recursoGrupo', ['$resource', function($resource) {
 		return $resource('v1/grupos');
-	});
+	}]);
