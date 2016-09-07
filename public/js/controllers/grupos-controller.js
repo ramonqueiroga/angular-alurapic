@@ -1,15 +1,13 @@
-angular.module('alurapic').controller('GruposController', function($scope, $http) {
+angular.module('alurapic').controller('GruposController', ['$scope', 'recursoGrupo', function($scope, recursoGrupo) {
 
 	$scope.grupos = [];
 	$scope.mensagem = '';
 
-	$http.get('v1/grupos')
-	.success(function(grupos) {
+	recursoGrupo.query(function(grupos) {
 		$scope.grupos = grupos;
-	}).error(function(error) {
-		console.log(error)
+	}, function(error) {
 		$scope.mensagem = error;
 	});
 
 
-});
+}]);

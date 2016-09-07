@@ -1,6 +1,7 @@
-angular.module('alurapic').controller('FotosController', function($scope, recursoFoto) {
+angular.module('alurapic').controller('FotosController', ['$scope', 'recursoFoto', function($scope, recursoFoto) {
 
 	$scope.fotos = [];
+	$scope.titulos = [];	
 	/** UTILIZADO DIRETAMENTE NA DIRETIVA NG-REPEAT. VALORES ATUALIZADOS PELA DIRETAIVA NG-MODEL */
 	$scope.filtro = '';
 	$scope.mensagem = '';
@@ -25,4 +26,4 @@ angular.module('alurapic').controller('FotosController', function($scope, recurs
 
 	};
 
-});
+}]);
