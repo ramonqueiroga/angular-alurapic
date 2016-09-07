@@ -1,4 +1,4 @@
-angular.module('alurapic', ['minhasDiretivas', 'ngAnimate', 'ngRoute'])
+angular.module('alurapic', ['minhasDiretivas', 'ngAnimate', 'ngRoute', 'meusServicos'])
 .config(function($routeProvider, $locationProvider) {
 
 	/**PARA UTILIZAMOS ESSE RECURSO (REMOVER A TRALHA DA URL) PRECISAMOS FICAR ATENTO POIS O SERVIDOR TEM QUE ESTAR PREARADO PARA ENTENDER ISSO TAMBEM

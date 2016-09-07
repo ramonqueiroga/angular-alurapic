@@ -1,4 +1,5 @@
-angular.module('minhasDiretivas', []).directive('meuPainel', function() {
+angular.module('minhasDiretivas', [])
+.directive('meuPainel', function() {
 	var ddo = {};
 	/*
 	 * A = Attribute (<div meu-painel>)
@@ -22,7 +23,8 @@ angular.module('minhasDiretivas', []).directive('meuPainel', function() {
 	ddo.templateUrl = 'js/directives/meu-painel.html';
 
 	return ddo;
-}).directive('minhaFoto', function() {
+})
+.directive('minhaFoto', function() {
 	var ddo = {};
 	ddo.restrict = "AE";
 	ddo.scope = {
@@ -31,5 +33,17 @@ angular.module('minhasDiretivas', []).directive('meuPainel', function() {
 	};
 	ddo.transclude = true;
 	ddo.templateUrl = 'js/directives/minha-foto.html';
+	return ddo;
+})
+.directive('meuBotaoPerigo', function() {
+	var ddo = {};
+	ddo.restrict = "E";
+	
+	ddo.scope = {
+		nome: '@',
+		/* & = Utilizado para passar functions para dentro das diretivas, diferente do @ que fazemos uma copia em String do que foi passado no parametro */
+		acao: '&'
+	}
+	ddo.template = '<button ng-click="acao(foto)" class="btn btn-danger btn-block">{{nome}}</button>';
 	return ddo;
 });
