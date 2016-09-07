@@ -1,22 +1,10 @@
-angular.module('meusServicos', ['ngResource'])
-	.factory('recursoFoto', ['$resource', function($resource) {
-		return $resource('v1/fotos/:fotoId', null, {
-			'update': {
-				method: 'PUT'
-			}
-		});
-	}])
-
-	.factory('recursoGrupo', ['$resource', function($resource) {
-		return $resource('v1/grupos');
-	}])
-	
+angular.module('alurapic')
 	.factory('cadastroDeFotos', ['recursoFoto', '$q', '$rootScope', function(recursoFoto, $q, $rootScope) {
 		var service = {};
 		var evento = 'fotoCadastrada';
 
 		service.cadastrar = function(foto) {
-			return $q(function(resolve, reject){
+			return $q(function(resolve, reject) {
 				if(foto._id) {
 					recursoFoto.update({fotoId: foto._id}, foto, function() {
 						//$scope.$broadcast('fotoCadastrada');
@@ -53,4 +41,3 @@ angular.module('meusServicos', ['ngResource'])
 
 		return service;
 	}]);
-	
