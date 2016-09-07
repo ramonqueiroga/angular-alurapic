@@ -1,4 +1,4 @@
-angular.module('alurapic').controller('CadastroFotoController', function($scope, recursoFoto, $routeParams) {
+angular.module('alurapic').controller('CadastroFotoController', function($scope, recursoFoto, cadastroDeFotos, $routeParams) {
 
 	$scope.foto = {};
 	$scope.mensagem = '';
@@ -14,23 +14,13 @@ angular.module('alurapic').controller('CadastroFotoController', function($scope,
 
 	$scope.enviar = function() {
 		if($scope.formulario.$valid) {
-			if($scope.foto._id) {
-				recursoFoto.update({fotoId: $scope.foto._id}, $scope.foto, function() {
-					$scope.mensagem = 'Foto atualizada com sucesso!';
-				}, function(error){
-					console.log(error);
-					$scope.mensagem = 'Não foi possível atulizar a foto!';
-				});
-			} else {
-				recursoFoto.save($scope.foto, function() {
-					$scope.foto = {};
-					$scope.mensagem = 'Foto cadastrada com sucesso!';
-				}, function(error) {
-					console.log(error);
-					$scope.mensagem = 'Erro ao cadastrar a foto: ' + error;
-				});							
-			}
-
+			cadastroDeFotos.cadastrar($scope.foto)
+			.then(function(dados) {
+				$scope.mensagem = dados.mensagem;
+				if(dados.inclusao) $scope.foto = {};
+			}).catch(function(error){
+				$scope.mensagem = error.mensagem;
+			});
 		}
 	};
 
